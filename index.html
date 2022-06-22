@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <title> Progetto ProdMult </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--load all styles -->
+    <link href="fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        h {}
+        
+        body {
+            position: relative;
+        }
+        
+        .jumbotron {
+            background-image: url(background.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+        
+        #summ {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        #contain {
+            clear: both;
+        }
+        
+        .card-deck {
+            position: relative;
+            left: 15px;
+            width: 100%;
+        }
+        
+        #logoinfouma {}
+        
+        #footer {
+            background-image: url(background.webp);
+            margin-top: 10%;
+            height: 400px;
+            text-align: center;
+        }
+        
+        {}
+        
+        #firma {}
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#barra">
+    <nav id="barra" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">My DrawPlayer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href=./drawPlayer.html>DrawPlayer</a>
+                <a class="nav-item nav-link" href="#footer">About</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="h" class="jumbotron ">
+        <h1 class="display-4 text-light">My Draw Player</h1>
+        <p class="lead text-light">Metti alla prova le tue abilita di disegno!</p>
+        <hr class="my-4">
+        <p class="text-light">Inizia subito!</p>
+        <a class="btn btn-primary btn-lg" href="./codePlayer.html" role="button">JOIN</a>
+    </div>
+    <div class="container">
+        <div class="row" id="appSummary">
+            <h1>Perchè un Draw Player?</h1>
+            <p id="summ"> Data la necessità di sviluppare un progetto per l'esame di produzione multimediale, ho pensato a un prodotto che mette a disposizione del client una tela su cui disegnare a 'mouse libero'. Questa funzionalità è realizzata grazie all'uso del
+                tag HTML <i>Canvas</i> e la libreria Fabric.js. </p>
+        </div>
+    </div>
+    <div id="contain">
+        <div class="card-deck ">
+            <div class="card">
+                <img src="logoCanvas.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fab fa-bootstrap"></i>Canvas</h5>
+                    <p class="card-text"> Il canvas è un elemento HTML5 rappresentato dal tag "canvas". Può essere inteso come il corrispettivo digitale di una tela trasparente: uno spazio all'interno di una pagina web sul quale insistere con specifiche API adatte a tracciare
+                        linee, cerchi, rettangoli, immagini e altro ancora. Il canvas è, in estrema sintesi, una grande matrice di pixel, ognuno dei quali modificabile singolarmente nelle sue quattro componenti RGBA, rosso, verde, blu e alpha, la trasparenza.</p>
+
+                </div>
+            </div>
+            <div class="card">
+                <img src="fabric-1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fab fa-bootstrap"></i>Fabric</h5>
+                    <p class="card-text"> In questo articolo esaminiamo Fabric.js, una potente libreria JavaScript che rende il lavoro con HTML5 Canvas una passeggiata di salute. Fabric fornisce un modello a oggetti che mancava al canvas, come anche un parser SVG, un livello
+                        di interattività, e una suite completa di altri strumenti indispensabili. È un progetto completamentee open-source, sotto licenza MIT con numerosi contribuiti nel corso degli anni.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+
+
+        <h2 class="text-light" id="firma"> Niccolò Calabrese</h2>
+        <p>
+            <a href="www.unipi.it">
+                <h5 class="text-light">Informatica umanistica</h5>
+            </a>
+        </p>
+        <p class=" text-light lead"> Progetto sviluppato per l'esame di produzione multimediale</p>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+    </script>
+</body>
+
+</html>

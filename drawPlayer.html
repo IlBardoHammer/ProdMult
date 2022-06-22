@@ -1,0 +1,234 @@
+<html>
+
+<head>
+    <title> Progetto ProdMult </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--load all styles -->
+    <link href="fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="./jquery-ui/jquery-ui.css" rel="stylesheet">
+
+    <style>
+        body {
+            position: relative;
+        }
+        
+        .jumbotron {
+            background-image: url(background.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+        
+        #summ {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        #contain {
+            clear: both;
+        }
+        
+        .card-deck {
+            position: relative;
+            left: 15px;
+            width: 100%;
+        }
+        
+        #footer {
+            background-image: url(background.webp);
+            margin-top: 10%;
+            height: 400px;
+            text-align: center;
+        }
+        
+        #sheet-container {
+            width: 650px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#barra">
+    <nav id="barra" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">My DrawPlayer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href=./drawPlayer.html>Draw Player</a>
+                <a class="nav-item nav-link" href="#footer">About</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row" id="appSummary">
+            <h1>Draw Player</h1>
+            <p id="summ"> Data la necessità di sviluppare un progetto per l'esame di produzione multimediale, e visto che per altri esami avevo gia avuto la possibilita di creare siti e simili, ho voluto provare le mie abilità di coding per creare qualcosa di nuovo</p>
+        </div>
+    </div>
+    <div id="contain" class="row">
+        <div class="col-7 pl-4 pr-3">
+            <div id="sheet-container">
+                <canvas id="sheet" width="650" height="400"></canvas>
+
+            </div>
+            <div class="mt-2">
+                <input type="file" id="imageLoader" name="imageLoader" style="display: none;" />
+                <button id="clear-canvas" class="btn btn-info">Pulisci</button><br><br>
+
+                <label for="favcolor">Colore linea:</label>
+                <input type="color" id="favcolor" name="favcolor" value="#ff0000">
+                <label for="drawing-line-width">Linea:</label>
+                <span class="line-width-info">5</span><input type="range" value="5" min="0" max="20" id="drawing-line-width"><br><br>
+
+                <label for="shadowcolor">Colore ombra:</label>
+                <input type="color" id="shadowcolor" name="shadowcolor" value="#ff0055">
+                <label for="drawing-shadow-width">Ombra:</label>
+                <span class="shadow-line-info">5</span><input type="range" value="5" min="0" max="20" id="drawing-shadow-width">
+                <label for="drawing-shadow-offset">Offset ombra:</label>
+                <span class="shadow-offset-info">0</span><input type="range" value="0" min="0" max="20" id="drawing-shadow-offset"><br><br>
+
+                <a href="#" id="lnkDownload" class="btn btn-success">Salva immagine</a>
+            </div>
+
+        </div>
+        <div class="col-5">
+            Cliccare su ... per iniziare a fare un nuovo disegno
+        </div>
+    </div>
+    <div id="footer">
+        <h2 class="text-light" id="firma"> Andrea Dattola</h2>
+        <p>
+            <a href="www.unipi.it">
+                <h5 class="text-light">Informatica umanistica</h5>
+            </a>
+        </p>
+        <p class=" text-light lead"> Progetto sviluppato per l'esame di produzione multimediale</p>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="./jquery-ui/jquery-ui.js"></script>
+    <script src="fabric.min.js"></script>
+
+    <script>
+        var canvas = new fabric.Canvas('sheet', {
+            isDrawingMode: true
+        });
+        canvas.isDrawingMode = true;
+        canvas.freeDrawingBrush.width = 1;
+        canvas.freeDrawingBrush.color = "#ff0000";
+
+        fabric.Object.prototype.transparentCorners = false;
+
+        $('#clear-canvas').click(function() {
+            canvas.clear();
+        });
+
+        $('#drawing-line-width').change(function() {
+            canvas.freeDrawingBrush.width = parseInt(this.value, 10) || 1;
+            $(this).prev().html(this.value);
+        });
+
+        $('#drawing-shadow-width').change(function() {
+            canvas.freeDrawingBrush.shadow.blur = parseInt(this.value, 10) || 1;
+            $(this).prev().html(this.value);
+        });
+
+        $('#drawing-shadow-offset').change(function() {
+            canvas.freeDrawingBrush.shadow.offsetX = parseInt(this.value, 10) || 0;
+            canvas.freeDrawingBrush.shadow.offsetY = parseInt(this.value, 10) || 0;
+            $(this).prev().html(this.value);
+        });
+
+
+        if (canvas.freeDrawingBrush) {
+            var brush = canvas.freeDrawingBrush;
+            brush.color = $("#favcolor").val();
+            if (brush.getPatternSrc) {
+                brush.source = brush.getPatternSrc.call(brush);
+            }
+            brush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
+            brush.shadow = new fabric.Shadow({
+                blur: parseInt($('#drawing-shadow-width').val(), 10) || 0,
+                offsetX: 0,
+                offsetY: 0,
+                affectStroke: true,
+                color: $("#shadowcolor").val(),
+            });
+        }
+
+
+        if (canvas.freeDrawingBrush) {
+            canvas.freeDrawingBrush.color = $("#favcolor").val();
+            canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
+            canvas.freeDrawingBrush.shadow = new fabric.Shadow({
+                blur: parseInt($('#drawing-shadow-width').val(), 10) || 0,
+                offsetX: 0,
+                offsetY: 0,
+                affectStroke: true,
+                color: $("#shadowcolor").val(),
+            });
+        }
+
+        var imageLoader = document.getElementById('imageLoader');
+        imageLoader.addEventListener('change', handleImage, false);
+
+        function handleImage(e) {
+            var objects = canvas.getObjects();
+            for (var i in objects) {
+                objects[i].remove();
+            }
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var img = new Image();
+                img.onload = function() {
+                    var imgInstance = new fabric.Image(img, {
+                        selectable: 1
+                    })
+                    canvas.add(imgInstance);
+                    canvas.deactivateAll().renderAll();
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+
+
+        var imageSaver = document.getElementById('lnkDownload');
+        imageSaver.addEventListener('click', saveImage, false);
+
+        function saveImage(e) {
+            this.href = canvas.toDataURL({
+                format: 'png',
+                quality: 0.8
+            });
+            this.download = 'canvas.png'
+        }
+
+        document.getElementById("favcolor").addEventListener("change", onChangeColor);
+
+        function onChangeColor() {
+            canvas.freeDrawingBrush.color = this.value;
+        }
+
+        document.getElementById("shadowcolor").addEventListener("change", onChangeShadowColor);
+
+        function onChangeShadowColor() {
+            canvas.freeDrawingBrush.shadow.color = this.value;
+        }
+    </script>
+</body>
+
+</html>
